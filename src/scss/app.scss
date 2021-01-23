@@ -1,0 +1,41 @@
+@import "header";
+@import "home";
+@import "filmCard";
+@import "loader";
+@import "filmPage";
+@import "slider";
+
+body {
+  margin: 0;
+  background-color: #f4f4f4;
+  font-family: "Ubuntu", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  h1,
+  h4,
+  h3 {
+    text-shadow: 0 0 7px #616161;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      color: #616161;
+    }
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  li {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+}

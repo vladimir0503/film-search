@@ -1,0 +1,168 @@
+.filmPage {
+    display: flex;
+    width: 950px;
+    margin: 0 auto;
+    margin-top: 77px;
+    margin-bottom: 20px;
+
+    h1,
+    h3 {
+        color: #616161;
+    }
+
+    .infoWrapper {
+        display: flex;
+        margin: 0 auto;
+        margin-top: -86px;
+        width: 900px;
+    }
+
+    .infoBlock {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 658px;
+        margin-left: 25px;
+        padding-top: 98px;
+    }
+
+    .infoItem {
+        border-bottom: 1px solid;
+        border-color: grey;
+        box-shadow: 0px 14px 8px -7px rgba(34, 60, 80, 0.2);
+    }
+
+    img {
+        position: relative;
+        z-index: 100;
+        border-radius: 3px;
+        width: 210px;
+        height: 323px;
+        object-fit: cover;
+        box-shadow: 1px 2px 8px 7px rgba(34, 60, 80, 0.2);
+    }
+
+    // .hiddenBlock {
+    //     position: relative;
+    //     width: 560px;
+    //     height: 315px;
+    //     margin-bottom: -315px;
+    //     background-color: white;
+
+    //     h2 {
+    //         margin: 0;
+    //         color: black;
+    //     }
+    // }
+
+    .hide {
+        display: none;
+    }
+
+    // .trailerBlock {
+    //     margin: 20px 0 0 300px;
+    // }
+
+    details {
+        $img-marker: "data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjM0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIzNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOC41OSAxNi4zNGw0LjU4LTQuNTktNC41OC00LjU5TDEwIDUuNzVsNiA2LTYgNnoiLz48L3N2Zz4=";
+
+        position: relative;
+        margin-bottom: 0.5rem;
+        min-height: 1rem;
+        max-height: 3rem;
+        transition: min-height 0.15s linear, max-height 0.5s linear;
+        -webkit-transition: min-height 0.15s linear, max-height 0.5s linear;
+        will-change: max-height;
+        overflow: hidden;
+
+        // summary
+        summary {
+            // remove default marker
+            &::-webkit-details-marker {
+                display: none;
+            }
+            &::-moz-list-bullet {
+                list-style-type: none;
+            }
+
+            // content-fit width
+            display: inline-block;
+
+            // space for custom marker
+            padding-left: 1.5em;
+
+            // aux
+            cursor: pointer;
+            outline: 0;
+            transition: color 0.12s;
+            -webkit-transition: color 0.12s;
+
+            // border
+            span {
+                border-bottom: 1px currentColor dotted;
+            }
+
+            // custom marker
+            &::before {
+                content: "";
+                left: 0;
+                top: 0.4em;
+                position: absolute;
+                background: url($img-marker) no-repeat 50% 50% / 1em 1em;
+                width: 1em;
+                height: 1em;
+                transition: transform 0.1s linear;
+                -webkit-transition: transform 0.1s linear;
+            }
+
+            // hover
+            &:hover {
+                color: #616161;
+            }
+
+            // content of spoiler
+            & ~ * {
+                padding-left: 1.5em;
+                opacity: 0;
+                transition: opacity 0.15s linear;
+                -webkit-transition: opacity 0.15s linear;
+            }
+        }
+
+        // opened spoiler
+        &[open] {
+            min-height: 2em;
+            max-height: 500em;
+
+            summary {
+                color: #616161;
+
+                // show details content
+                & ~ * {
+                    opacity: 1;
+                }
+
+                // rotate custom marker
+                &:before {
+                    transform: rotate(90deg);
+                    -webkit-transform: rotate(90deg);
+                    -moz-transform: rotate(90deg);
+                }
+            }
+        }
+    }
+
+    ul {
+        margin: 20px 0 0 0;
+        padding: 0;
+    }
+
+    li {
+        list-style-type: none;
+        margin-bottom: 15px;
+    }
+
+    .trailerBlock {
+        margin-bottom: 20px;
+    }
+}
