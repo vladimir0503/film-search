@@ -5,10 +5,16 @@
 @import "filmPage";
 @import "slider";
 
+%paragraph-style {
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
 body {
   margin: 0;
   background-color: #f4f4f4;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -16,6 +22,7 @@ body {
   h4,
   h3 {
     text-shadow: 0 0 7px #616161;
+    font-weight: 500;
   }
 
   a {
@@ -23,19 +30,15 @@ body {
     color: black;
     transition: 0.5s;
     cursor: pointer;
+    @extend %paragraph-style;
 
     &:hover {
       color: #616161;
     }
   }
 
-  p {
-    font-size: 20px;
-    line-height: 1.5;
-  }
-
+  p,
   li {
-    font-size: 20px;
-    line-height: 1.5;
+    @extend %paragraph-style;
   }
 }

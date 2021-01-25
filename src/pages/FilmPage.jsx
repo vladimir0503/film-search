@@ -14,6 +14,7 @@ function FilmPage() {
 
     const [film, setFilm] = React.useState(null);
     const [trailerId, setTrailerId] = React.useState('');
+    const [spoilerInit, setSpoilerInit] = React.useState(false);
 
     const { id, autoSlider } = useSelector(state => state);
 
@@ -65,7 +66,7 @@ function FilmPage() {
                             <div className='infoBlock'>
                                 <div className='infoItem'>
                                     <h1>{film.nameRu}</h1>
-                                    <p>{`${film.nameEn} (${film.year})`}</p>
+                                    <span><p>{`${film.nameEn} (${film.year})`}</p></span>
                                 </div>
                                 <div className='infoItem'>
                                     <h3>Страна</h3>
@@ -81,8 +82,8 @@ function FilmPage() {
                                 </div>
                                 <div className={`infoItem ${!film.facts.length ? 'hide' : ''}`}>
                                     <h3>Факты:</h3>
-                                    <details>
-                                        <summary><span>Показать</span></summary>
+                                    <details onClick={() => setSpoilerInit(!spoilerInit)}>
+                                        <summary>{!spoilerInit ? 'Показать' : 'Скрыть'}</summary>
                                         <ul>{film.facts.map(i => <li>{i}</li>)}</ul>
                                     </details>
                                 </div>
