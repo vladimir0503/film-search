@@ -30,6 +30,10 @@
         border-bottom: 1px solid;
         border-color: grey;
         box-shadow: 0px 14px 8px -7px rgba(34, 60, 80, 0.2);
+
+        span {
+            font-style: italic;
+        }
     }
 
     img {
@@ -42,26 +46,9 @@
         box-shadow: 1px 2px 8px 7px rgba(34, 60, 80, 0.2);
     }
 
-    // .hiddenBlock {
-    //     position: relative;
-    //     width: 560px;
-    //     height: 315px;
-    //     margin-bottom: -315px;
-    //     background-color: white;
-
-    //     h2 {
-    //         margin: 0;
-    //         color: black;
-    //     }
-    // }
-
     .hide {
         display: none;
     }
-
-    // .trailerBlock {
-    //     margin: 20px 0 0 300px;
-    // }
 
     details {
         $img-marker: "data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjM0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIzNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOC41OSAxNi4zNGw0LjU4LTQuNTktNC41OC00LjU5TDEwIDUuNzVsNiA2LTYgNnoiLz48L3N2Zz4=";
@@ -75,9 +62,7 @@
         will-change: max-height;
         overflow: hidden;
 
-        // summary
         summary {
-            // remove default marker
             &::-webkit-details-marker {
                 display: none;
             }
@@ -85,28 +70,19 @@
                 list-style-type: none;
             }
 
-            // content-fit width
             display: inline-block;
 
-            // space for custom marker
             padding-left: 1.5em;
 
-            // aux
             cursor: pointer;
             outline: 0;
             transition: color 0.12s;
             -webkit-transition: color 0.12s;
 
-            // border
-            span {
-                border-bottom: 1px currentColor dotted;
-            }
-
-            // custom marker
             &::before {
                 content: "";
                 left: 0;
-                top: 0.4em;
+                top: 1px;
                 position: absolute;
                 background: url($img-marker) no-repeat 50% 50% / 1em 1em;
                 width: 1em;
@@ -115,12 +91,10 @@
                 -webkit-transition: transform 0.1s linear;
             }
 
-            // hover
             &:hover {
                 color: #616161;
             }
 
-            // content of spoiler
             & ~ * {
                 padding-left: 1.5em;
                 opacity: 0;
@@ -129,7 +103,6 @@
             }
         }
 
-        // opened spoiler
         &[open] {
             min-height: 2em;
             max-height: 500em;
@@ -137,12 +110,10 @@
             summary {
                 color: #616161;
 
-                // show details content
                 & ~ * {
                     opacity: 1;
                 }
 
-                // rotate custom marker
                 &:before {
                     transform: rotate(90deg);
                     -webkit-transform: rotate(90deg);

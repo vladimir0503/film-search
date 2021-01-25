@@ -36,7 +36,7 @@ const Header = () => {
                     <h1>ALL FILMS</h1>
                 </Link>
                 <input
-                    placeholder='Введите название фильма'
+                    placeholder='Введите название'
                     value={filmName}
                     onChange={e => handleChange(e.target.value)}>
                 </input>
