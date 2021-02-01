@@ -29,6 +29,16 @@
         margin: 25px 0 10px 0;
     }
 
+    h3 {
+        width: 335px;
+    }
+
+    @media screen and (max-width: 500px) {
+        h3 {
+            width: auto;
+        }
+    }
+
     h4 {
         margin: 0 0 10px 0;
     }

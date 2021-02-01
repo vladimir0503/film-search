@@ -36,6 +36,8 @@ const Header = () => {
                     <h1>ALL FILMS</h1>
                 </Link>
                 <input
+                    type='text'
+                    // maxlength='5'
                     placeholder='Введите название'
                     value={filmName}
                     onChange={e => handleChange(e.target.value)}>
@@ -43,7 +45,8 @@ const Header = () => {
                 <img src='https://cdn1.iconfinder.com/data/icons/jumpicon-basic-ui-line-1/32/-_Magnifier-Search-Zoom--512.png'
                     alt='magnifier'
                     width='25px'
-                    height='25px'></img>
+                    height='25px'>
+                </img>
             </div>
         </div>
     );

@@ -7,10 +7,14 @@ const headers = {
     'X-API-KEY': '41bf77c1-b2b8-4711-b6b6-76cf890ced57',
 };
 
-const Slider = ({ id, autoSliderInit }) => {
+const Slider = ({ id, autoSliderInit, position, changePosition }) => {
 
     const [slideArr, setSlideArr] = React.useState([]);
     const [slideCount, setSlideCount] = React.useState(1);
+    // const [slideSize, setSlideSize] = React.useState({
+    //     width: '950px',
+    //     height: '440px'
+    // });
 
     let interval = null;
 
@@ -26,21 +30,6 @@ const Slider = ({ id, autoSliderInit }) => {
             setSlideArr([]);
         };
     };
-
-    const sliderItems = (url, index) => (
-        {
-            width: '950px',
-            height: '440px',
-            marginTop: `${index > 0 ? '-440px' : ''}`,
-            backgroundImage: `url(${url})`,
-            backgroundSize: 'cover',
-            borderRadius: '3px',
-            transition: '1.5s',
-            position: 'relative',
-            zIndex: index + 1,
-            opacity: `${index === slideCount ? '100%' : '0'}`
-        }
-    );
 
     if (autoSliderInit && slideArr.length) {
         interval = setInterval(() => {
@@ -64,15 +53,60 @@ const Slider = ({ id, autoSliderInit }) => {
         setSlideCount(slideCount === 0 ? slideArr.length - 1 : slideCount - 1);
     };
 
+    // const changeSlideSize = () => {
+    //     const windowWidth = document.body.clientWidth;
+    //     if (windowWidth <= 950) {
+    //         setSlideSize({
+    //             width: '100wv',
+    //             height: '440px'
+    //         })
+    //     }
+
+    //     console.log(windowWidth);
+    // }
+
+    // const sliderItems = (url, index) => (
+    //     {
+    //         width: size.width,
+    //         height: size.height,
+    //         marginTop: `${index > 0 ? `-${size.height}` : ''}`,
+    //         backgroundImage: `url(${url})`,
+    //         backgroundSize: 'cover',
+    //         borderRadius: '3px',
+    //         transition: '1.5s',
+    //         position: 'relative',
+    //         zIndex: index + 1,
+    //         opacity: `${index === slideCount ? '100%' : '0'}`
+    //     }
+    // );
+
+    const slideStyles = (index) => (
+        {
+            margin: '0 auto',
+            display: 'block',
+            // width: size.width,
+            // height: size.height,
+            marginTop: `${index > 0 ? `-${position}` : ''}`,
+            borderRadius: '3px',
+            transition: '1.5s',
+            // position: 'relative',
+            zIndex: index + 1,
+            opacity: `${index === slideCount ? '100%' : '0'}`
+        }
+    );
+
+    console.log(position);
+
     React.useEffect(() => {
         loadFrames(id);
+        changePosition();
     }, []);
 
     return (
         <div className='sliderWrapper'>
             <div className='sliderBlock'>
                 {slideArr.length
-                    ? slideArr.map((frame, id) => <div key={id} style={sliderItems(frame.image, id)}></div>)
+                    ? slideArr.map((frame, id) => <img key={id} src={frame.image} style={slideStyles(id)} />)
                     : <img src='https://argamak-sher.uz/wp-content/uploads/no-image.png'></img>}
             </div>
             <div className={`sliderBtnBlock ${!slideArr.length ? 'hide' : ''}`}>

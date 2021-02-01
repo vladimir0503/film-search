@@ -93,28 +93,32 @@
         }
     }
 
+    .iconBlock {
+        width: 25px;
+        height: 25px;
+        background-color: white;
+    }
+
     img {
         margin-left: -113px;
+        background-color: white;
     }
 
     @media screen and (max-width: 500px) {
         img {
             margin-left: -65px;
-            // display: none;
         }
     }
 
     @media screen and (max-width: 400px) {
         img {
-            margin-left: -54px;
-            // display: none;
+            margin-left: -57px;
         }
     }
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 350px) {
         img {
-            margin-left: -44px;
-            // display: none;
+            margin-left: -45px;
         }
     }
 }
