@@ -173,7 +173,10 @@
             height: 340px;
             margin-top: -340px;
             opacity: 100%;
-            // pointer-events: none;
+
+            &:hover {
+                opacity: 100%;
+            }
 
             button {
                 width: 90px;
