@@ -13,54 +13,12 @@
         @extend %desctop-size;
     }
 
-    // @media screen and (max-width: 800px) {
-    //     .sliderBlock {
-    //         width: 750px;
-    //         height: 340px;
-    //     }
-    // }
-
-    // @media screen and (max-width: 450px) {
-    //     .sliderBlock {
-    //         width: 350px;
-    //         height: 340px;
-    //     }
-    // }
-
-    // @media screen and (max-width: 350px) {
-    //     .sliderBlock {
-    //         width: 300px;
-    //         height: 300px;
-    //     }
-    // }
-
     img {
         @extend %desctop-size;
         object-fit: cover;
         width: 950px;
         height: 440px;
     }
-
-    // @media screen and (max-width: 800px) {
-    //     img {
-    //         width: 750px;
-    //         height: 340px;
-    //     }
-    // }
-
-    // @media screen and (max-width: 450px) {
-    //     img {
-    //         width: 350px;
-    //         height: 340px;
-    //     }
-    // }
-
-    // @media screen and (max-width: 350px) {
-    //     img {
-    //         width: 300px;
-    //         height: 300px;
-    //     }
-    // }
 
     .sliderBtnBlock {
         @extend %desctop-size;
@@ -74,7 +32,7 @@
         transition: 0.5s;
         opacity: 0;
 
-        &:hover {
+        &.showBtn {
             opacity: 1;
         }
 
@@ -124,33 +82,6 @@
             }
         }
     }
-
-    // @media screen and (max-width: 800px) {
-    //     .sliderBtnBlock {
-    //         width: 700px;
-    //         height: 340px;
-    //         margin-top: -340px;
-    //         opacity: 100%;
-    //         // pointer-events: none;
-
-    //         button {
-    //             width: 90px;
-    //             height: 90px;
-
-    //             &:hover {
-    //                 background-color: #616161;
-    //                 opacity: 50%;
-    //                 box-shadow: none;
-    //             }
-
-    //             svg {
-    //                 g {
-    //                     transform-origin: 5px 5px;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 }
 
 @media screen and (max-width: 800px) {
@@ -172,7 +103,6 @@
             width: 700px;
             height: 340px;
             margin-top: -340px;
-            opacity: 1;
 
             button {
                 width: 90px;
@@ -213,7 +143,6 @@
             width: 330px;
             height: 340px;
             margin-top: -340px;
-            // opacity: 100%;
 
             button {
                 width: 65px;
@@ -221,9 +150,6 @@
 
                 svg {
                     height: 23px;
-                    // g {
-                    //     transform-origin: 5px 5px;
-                    // }
                 }
             }
         }
@@ -249,7 +175,6 @@
             width: 280px;
             height: 300px;
             margin-top: -300px;
-            // opacity: 1;
 
             button {
                 width: 50px;
@@ -257,10 +182,6 @@
 
                 svg {
                     height: 17px;
-
-                    // g {
-                    //     transform-origin: 5px 5px;
-                    // }
                 }
 
                 .left {
