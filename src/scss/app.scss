@@ -5,11 +5,11 @@
 @import "filmPage";
 @import "slider";
 
-// %paragraph-style {
-//   font-size: 20px;
-//   line-height: 1.5;
-//   font-weight: 400;
-// }
+%paragraph-style {
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 400;
+}
 
 body {
   margin: 0;
@@ -30,10 +30,7 @@ body {
     color: black;
     transition: 0.5s;
     cursor: pointer;
-    // @extend %paragraph-style;
-    font-size: 20px;
-    line-height: 1.5;
-    font-weight: 400;
+    @extend %paragraph-style;
 
     &:hover {
       color: #616161;
@@ -42,9 +39,6 @@ body {
 
   p,
   li {
-    // @extend %paragraph-style;
-    font-size: 20px;
-    line-height: 1.5;
-    font-weight: 400;
+    @extend %paragraph-style;
   }
 }

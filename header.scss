@@ -1,0 +1,124 @@
+.headerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+    z-index: 9000;
+    width: 100vw;
+    height: 60px;
+    background-color: #1f1f1f;
+
+    .headerItems {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 663px;
+        height: 43px;
+
+        h1 {
+            margin: 0;
+            color: white;
+            transition: 0.5s;
+
+            &:hover {
+                text-shadow: 0 0 7px rgb(255, 255, 255);
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            h1 {
+                font-size: 91%;
+            }
+        }
+
+        input {
+            width: 400px;
+            height: 40px;
+            padding-left: 17px;
+            resize: none;
+            border: 1px solid #e5e3dd;
+            box-shadow: none;
+            box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0s;
+            border-radius: 23px;
+            font-size: 20px;
+            outline: none;
+            transition: 0.5s;
+            &:focus {
+                box-shadow: white 0px 0px 5px 1px;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            input {
+                width: 269px;
+
+                &::placeholder {
+                    font-size: 85%;
+                }
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            input {
+                width: 235px;
+            }
+        }
+
+        @media screen and (max-width: 350px) {
+            input {
+                width: 203px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .headerItems {
+            width: 382px;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        .headerItems {
+            width: 342px;
+        }
+    }
+
+    @media screen and (max-width: 350px) {
+        .headerItems {
+            width: 303px;
+        }
+    }
+
+    .iconBlock {
+        width: 25px;
+        height: 25px;
+        background-color: white;
+    }
+
+    img {
+        margin-left: -113px;
+        background-color: white;
+    }
+
+    @media screen and (max-width: 500px) {
+        img {
+            margin-left: -65px;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        img {
+            margin-left: -57px;
+        }
+    }
+
+    @media screen and (max-width: 350px) {
+        img {
+            margin-left: -45px;
+        }
+    }
+}

@@ -48,7 +48,7 @@ const Slider = ({ id, autoSliderInit, position, changePosition }) => {
             setSlideCount(slideCount === slideArr.length - 1 ? 0 : slideCount + 1);
             clearInterval(interval);
         }, 3000);
-    }
+    };
 
     const stopAutoSlider = () => {
         clearInterval(interval);
