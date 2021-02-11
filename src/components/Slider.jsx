@@ -7,7 +7,7 @@ let interval = null;
 
 const Slider = ({ count, position, frames }) => {
 
-    let intervalCount = 1;
+    let intervalCount = 0;
 
     const dispatch = useDispatch();
 
@@ -28,7 +28,6 @@ const Slider = ({ count, position, frames }) => {
         } else {
             ++intervalCount;
             dispatch(changeCounter(intervalCount));
-            console.log(intervalCount);
         };
     };
 
@@ -45,10 +44,9 @@ const Slider = ({ count, position, frames }) => {
     );
 
     React.useEffect(() => {
-        dispatch(changeCounter(1));
-        if (frames.length) {
-            interval = setInterval(() => autoSlider(), 2000);
-        };
+        dispatch(changeCounter(0));
+        interval = setInterval(() => autoSlider(), 2000);
+        if (!frames.length) clearInterval(interval);
         return () => clearInterval(interval);
     }, []);
 

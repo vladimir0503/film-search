@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 import FilmCard from '../components/FilmCard';
 import Loader from '../components/Loader';
