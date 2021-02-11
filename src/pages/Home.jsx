@@ -6,7 +6,7 @@ import Loader from '../components/Loader';
 
 const Home = () => {
 
-    const { films, isLoaded } = useSelector(state => state);
+    const { films, isLoaded } = useSelector(({ films }) => films);
 
     return (
         <div className='filmsWrapper'>

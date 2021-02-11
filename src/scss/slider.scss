@@ -32,7 +32,11 @@
         transition: 0.5s;
         opacity: 0;
 
-        &.showBtn {
+        &.hide {
+            display: none;
+        }
+
+        &:hover {
             opacity: 1;
         }
 
@@ -103,6 +107,11 @@
             width: 700px;
             height: 340px;
             margin-top: -340px;
+            opacity: 1;
+
+            &:hover {
+                opacity: 1;
+            }
 
             button {
                 width: 90px;

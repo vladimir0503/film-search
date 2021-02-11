@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { loadFilms } from '../redux/actions/loadFilms';
-import { isLoaded } from '../redux/actions/isLoaded';
+import { loadFilms, isLoaded } from '../redux/actions/films'
+
+// import { loadFilms } from '../redux/actions/loadFilms';
+// import { isLoaded } from '../redux/actions/isLoaded';
 
 const headers = {
     'X-API-KEY': '41bf77c1-b2b8-4711-b6b6-76cf890ced57',
@@ -37,7 +39,6 @@ const Header = () => {
                 </Link>
                 <input
                     type='text'
-                    // maxlength='5'
                     placeholder='Введите название'
                     value={filmName}
                     onChange={e => handleChange(e.target.value)}>
