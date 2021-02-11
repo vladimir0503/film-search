@@ -46,10 +46,6 @@ const Slider = ({ count, position, frames }) => {
     React.useEffect(() => {
         dispatch(changeCounter(0));
         interval = setInterval(() => autoSlider(), 2000);
-        if (!frames.length) {
-            console.log('Пустой массив');
-            clearInterval(interval);
-        };
         return () => clearInterval(interval);
     }, []);
 
