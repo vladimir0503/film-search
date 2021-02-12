@@ -3,32 +3,16 @@ import { useDispatch } from 'react-redux';
 
 import { changeCounter } from '../redux/actions/slider';
 
-let interval = null;
-
 const Slider = ({ count, position, frames }) => {
-
-    let intervalCount = 0;
 
     const dispatch = useDispatch();
 
     const slideFoward = () => {
-        clearInterval(interval);
         dispatch(changeCounter(count === frames.length - 1 ? 0 : ++count));
     };
 
     const slideBack = () => {
-        clearInterval(interval);
         dispatch(changeCounter(count === 0 ? frames.length - 1 : --count));
-    };
-
-    const autoSlider = () => {
-        if (intervalCount === frames.length - 1) {
-            intervalCount = 0;
-            dispatch(changeCounter(0));
-        } else {
-            ++intervalCount;
-            dispatch(changeCounter(intervalCount));
-        };
     };
 
     const slideStyles = (index) => (
@@ -45,8 +29,6 @@ const Slider = ({ count, position, frames }) => {
 
     React.useEffect(() => {
         dispatch(changeCounter(0));
-        interval = setInterval(() => autoSlider(), 2000);
-        return () => clearInterval(interval);
     }, []);
 
     return (

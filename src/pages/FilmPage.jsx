@@ -11,8 +11,6 @@ const headers = {
     'X-API-KEY': '41bf77c1-b2b8-4711-b6b6-76cf890ced57',
 };
 
-let interval = null;
-
 const FilmPage = React.memo(function FilmPage() {
     const [film, setFilm] = React.useState(null);
     const [trailerId, setTrailerId] = React.useState('');
@@ -82,8 +80,6 @@ const FilmPage = React.memo(function FilmPage() {
             item: trailerId
         }
     ];
-
-
 
     return (
 

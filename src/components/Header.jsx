@@ -34,12 +34,20 @@ const Header = () => {
                 <Link to='/'>
                     <h1>ALL FILMS</h1>
                 </Link>
-                <input
+                <Link to='/'>
+                    <input
+                        type='text'
+                        placeholder='Введите название'
+                        value={filmName}
+                        onChange={e => handleChange(e.target.value)}>
+                    </input>
+                </Link>
+                {/* <input
                     type='text'
                     placeholder='Введите название'
                     value={filmName}
                     onChange={e => handleChange(e.target.value)}>
-                </input>
+                </input> */}
                 <img src='https://cdn1.iconfinder.com/data/icons/jumpicon-basic-ui-line-1/32/-_Magnifier-Search-Zoom--512.png'
                     alt='magnifier'
                     width='25px'
