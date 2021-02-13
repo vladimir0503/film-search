@@ -5,7 +5,7 @@
 
   publish = "build-output/"
 
-  command = "echo 'default context'"
+  command = "CI=false npm run build"
 
   functions = "functions/"
 
