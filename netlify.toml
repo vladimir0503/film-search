@@ -3,7 +3,7 @@
 
   base = "project/"
 
-  publish = "build-output/"
+  publish = "public/"
 
   command = "CI=false npm run build"
 
