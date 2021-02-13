@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import InfoItem from '../components/InfoItem'
 import Slider from '../components/Slider';
 import Loader from '../components/Loader';
-import { initialSlider, changeSlidePosition, loadFrames } from '../redux/actions/slider';
+import { changeSlidePosition, loadFrames } from '../redux/actions/slider';
 
 const headers = {
     'X-API-KEY': '41bf77c1-b2b8-4711-b6b6-76cf890ced57',
@@ -54,7 +54,6 @@ const FilmPage = React.memo(function FilmPage() {
         loadTrailer(id);
         loadSlider(id);
         dispatch(loadFrames([]));
-        dispatch(initialSlider(true));
         dispatch(changeSlidePosition());
     }, []);
 

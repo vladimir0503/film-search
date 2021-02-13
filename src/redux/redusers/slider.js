@@ -1,6 +1,5 @@
 const initialState = {
     frames: [],
-    autoSlider: true,
     sliderCount: 1,
     slidePosition: null,
 };
@@ -17,12 +16,6 @@ const correctPosition = () => {
 
 const slider = (state = initialState, action) => {
     switch (action.type) {
-        case 'INITIAL_SLIDER':
-            return {
-                ...state,
-                autoSlider: action.payload
-            }
-
         case 'LOAD_FRAMES':
             return {
                 ...state,

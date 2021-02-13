@@ -3,11 +3,6 @@ export const loadFrames = (fr) => ({
     payload: fr
 });
 
-export const initialSlider = (flag) => ({
-    type: 'INITIAL_SLIDER',
-    payload: flag,
-});
-
 export const changeCounter = (val) => ({
     type: 'CHANGE_COUNTER',
     payload: val

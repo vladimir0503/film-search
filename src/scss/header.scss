@@ -28,12 +28,6 @@
             }
         }
 
-        // @media screen and (max-width: 500px) {
-        //     h1 {
-        //         font-size: 91%;
-        //     }
-        // }
-
         input {
             width: 400px;
             height: 40px;
@@ -51,47 +45,7 @@
                 box-shadow: white 0px 0px 5px 1px;
             }
         }
-
-        // @media screen and (max-width: 500px) {
-        //     input {
-        //         width: 269px;
-
-        //         &::placeholder {
-        //             font-size: 85%;
-        //         }
-        //     }
-        // }
-
-        // @media screen and (max-width: 400px) {
-        //     input {
-        //         width: 235px;
-        //     }
-        // }
-
-        // @media screen and (max-width: 350px) {
-        //     input {
-        //         width: 203px;
-        //     }
-        // }
     }
-
-    // @media screen and (max-width: 500px) {
-    //     .headerItems {
-    //         width: 382px;
-    //     }
-    // }
-
-    // @media screen and (max-width: 400px) {
-    //     .headerItems {
-    //         width: 342px;
-    //     }
-    // }
-
-    // @media screen and (max-width: 350px) {
-    //     .headerItems {
-    //         width: 303px;
-    //     }
-    // }
 
     .iconBlock {
         width: 25px;
@@ -103,24 +57,6 @@
         margin-left: -113px;
         background-color: white;
     }
-
-    // @media screen and (max-width: 500px) {
-    //     img {
-    //         margin-left: -65px;
-    //     }
-    // }
-
-    // @media screen and (max-width: 400px) {
-    //     img {
-    //         margin-left: -57px;
-    //     }
-    // }
-
-    // @media screen and (max-width: 350px) {
-    //     img {
-    //         margin-left: -45px;
-    //     }
-    // }
 }
 
 @media screen and (max-width: 500px) {
