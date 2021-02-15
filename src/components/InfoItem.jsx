@@ -23,6 +23,7 @@ const InfoItem = React.memo(function InfoItem({ infoItem, i }) {
                         : i === 4 ? (
                             <div className='trailerBlock'>
                                 <iframe
+                                    title='Trailer'
                                     width="660"
                                     height="415"
                                     src={`https://www.youtube.com/embed/${infoItem.item}?&disablekb=0`}

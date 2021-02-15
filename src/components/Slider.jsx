@@ -35,8 +35,8 @@ const Slider = ({ count, position, frames }) => {
         <div className='sliderWrapper'>
             <div className='sliderBlock'>
                 {frames.length
-                    ? frames.map((frame, id) => <img key={id} src={frame.image} style={slideStyles(id)} />)
-                    : <img src='https://argamak-sher.uz/wp-content/uploads/no-image.png'></img>}
+                    ? frames.map((frame, id) => <img alt='frame' key={id} src={frame.image} style={slideStyles(id)} />)
+                    : <img alt='no-frame' src='https://argamak-sher.uz/wp-content/uploads/no-image.png'></img>}
             </div>
             <div className={`sliderBtnBlock ${!frames.length ? 'hide' : ''}`}>
                 <button onClick={slideBack}>
