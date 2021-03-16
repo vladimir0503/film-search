@@ -30,8 +30,10 @@ const FilmPage = React.memo(function FilmPage() {
         try {
             const res = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}/videos`, { headers });
             const { trailers } = await res.json();
-            const trailerId = trailers[0].url.split('=').filter((_, id) => id === 1).join();
+            const trailerArr = trailers.filter(item => item.site === 'YOUTUBE' || item.site === 'YouTube');
+            const trailerId = trailerArr[0].url.split('=').filter((_, id) => id === 1).join();
             setTrailerId(trailerId);
+            console.log(trailers);
         } catch (error) {
             setTrailerId('');
             console.log(error);
@@ -79,6 +81,8 @@ const FilmPage = React.memo(function FilmPage() {
             item: trailerId
         }
     ];
+
+    // console.log(itemArr);
 
     return (
 
