@@ -1,25 +1,27 @@
-%block-size {
+%desctop-size {
     width: 950px;
     height: 440px;
     position: relative;
 }
 
 .sliderWrapper {
-    @extend %block-size;
+    @extend %desctop-size;
     z-index: 100;
     box-shadow: rgba(34, 60, 80, 0.2) 1px 2px 8px 7px;
 
     .sliderBlock {
-        @extend %block-size;
+        @extend %desctop-size;
     }
 
     img {
-        @extend %block-size;
+        @extend %desctop-size;
         object-fit: cover;
+        width: 950px;
+        height: 440px;
     }
 
     .sliderBtnBlock {
-        @extend %block-size;
+        @extend %desctop-size;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -30,8 +32,12 @@
         transition: 0.5s;
         opacity: 0;
 
+        &.hide {
+            display: none;
+        }
+
         &:hover {
-            opacity: 100%;
+            opacity: 1;
         }
 
         button {
@@ -79,9 +85,122 @@
                 top: 2px;
             }
         }
+    }
+}
 
-        &.hide {
-            display: none;
+@media screen and (max-width: 800px) {
+    .sliderWrapper {
+        width: 750px;
+        height: 340px;
+
+        .sliderBlock {
+            width: 750px;
+            height: 340px;
+        }
+
+        img {
+            width: 750px;
+            height: 340px;
+        }
+
+        .sliderBtnBlock {
+            width: 700px;
+            height: 340px;
+            margin-top: -340px;
+            opacity: 1;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            button {
+                width: 90px;
+                height: 90px;
+
+                &:hover {
+                    background-color: #616161;
+                    opacity: 50%;
+                    box-shadow: none;
+                }
+
+                svg {
+                    g {
+                        transform-origin: 5px 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .sliderWrapper {
+        width: 350px;
+        height: 340px;
+
+        .sliderBlock {
+            width: 350px;
+            height: 340px;
+        }
+
+        img {
+            width: 350px;
+            height: 340px;
+        }
+
+        .sliderBtnBlock {
+            width: 330px;
+            height: 340px;
+            margin-top: -340px;
+
+            button {
+                width: 65px;
+                height: 65px;
+
+                svg {
+                    height: 23px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .sliderWrapper {
+        width: 300px;
+        height: 300px;
+
+        .sliderBlock {
+            width: 300px;
+            height: 300px;
+        }
+
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .sliderBtnBlock {
+            width: 280px;
+            height: 300px;
+            margin-top: -300px;
+
+            button {
+                width: 40px;
+                height: 40px;
+
+                svg {
+                    height: 15px;
+                }
+
+                .left {
+                    right: 13px;
+                }
+
+                .right {
+                    left: -9px;
+                }
+            }
         }
     }
 }

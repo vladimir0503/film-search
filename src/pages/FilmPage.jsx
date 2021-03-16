@@ -2,21 +2,21 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import InfoItem from '../components/InfoItem'
 import Slider from '../components/Slider';
 import Loader from '../components/Loader';
-import { initialSlider } from '../redux/actions/initialSlider';
+import { changeSlidePosition, loadFrames } from '../redux/actions/slider';
 
 const headers = {
     'X-API-KEY': '41bf77c1-b2b8-4711-b6b6-76cf890ced57',
 };
 
-function FilmPage() {
-
+const FilmPage = React.memo(function FilmPage() {
     const [film, setFilm] = React.useState(null);
     const [trailerId, setTrailerId] = React.useState('');
-    const [spoilerInit, setSpoilerInit] = React.useState(false);
 
-    const { id, autoSlider } = useSelector(state => state);
+    const { id } = useSelector(({ films }) => films);
+    const { autoSlider, sliderCount, slidePosition, frames } = useSelector(({ slider }) => slider);
 
     const dispatch = useDispatch();
 
@@ -24,7 +24,6 @@ function FilmPage() {
         const res = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}`, { headers });
         const { data } = await res.json();
         setFilm(data);
-        console.log(data);
     };
 
     const loadTrailer = async (id) => {
@@ -33,20 +32,53 @@ function FilmPage() {
             const { trailers } = await res.json();
             const trailerId = trailers[0].url.split('=').filter((_, id) => id === 1).join();
             setTrailerId(trailerId);
-            console.log(trailers);
         } catch (error) {
             setTrailerId('');
-            console.log(error)
+            console.log(error);
+        };
+    };
+
+    const loadSlider = async (id) => {
+        try {
+            const res = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}/frames`, { headers });
+            const { frames } = await res.json();
+            const framesArr = frames.filter((_, id) => id < 15);
+            dispatch(loadFrames(framesArr));
+        } catch (error) {
+            dispatch(loadFrames([]));
         };
     };
 
     React.useEffect(() => {
         loadFilmInfo(id);
         loadTrailer(id);
-        dispatch(initialSlider(true));
+        loadSlider(id);
+        dispatch(loadFrames([]));
+        dispatch(changeSlidePosition());
     }, []);
 
-    console.log(film);
+    const itemArr = [
+        {
+            title: 'Страна',
+            item: !film ? [] : film.countries[0].country
+        },
+        {
+            title: 'Жанр',
+            item: !film ? [] : film.genres
+        },
+        {
+            title: 'Описание',
+            item: !film ? [] : film.description
+        },
+        {
+            title: 'Факты',
+            item: !film ? [] : film.facts
+        },
+        {
+            title: 'Трейлер',
+            item: trailerId
+        }
+    ];
 
     return (
 
@@ -57,49 +89,27 @@ function FilmPage() {
                         <Slider
                             id={id}
                             autoSliderInit={autoSlider}
+                            count={sliderCount}
+                            position={slidePosition}
+                            frames={frames}
                         />
                         <div className='infoWrapper'>
-                            <img
+                            <img className='desctopPoster'
                                 src={film.posterUrlPreview}
                                 alt='poster'>
                             </img>
                             <div className='infoBlock'>
-                                <div className='infoItem'>
-                                    <h1>{film.nameRu}</h1>
-                                    <span><p>{`${film.nameEn} (${film.year})`}</p></span>
-                                </div>
-                                <div className='infoItem'>
-                                    <h3>Страна</h3>
-                                    <p>{film.countries[0].country}</p>
-                                </div>
-                                <div className='infoItem'>
-                                    <h3>Жанр:</h3>
-                                    <ul>{film.genres.map(i => <li>{i.genre}</li>)}</ul>
-                                </div>
-                                <div className='infoItem'>
-                                    <h3>Описание:</h3>
-                                    <p>{film.description}</p>
-                                </div>
-                                <div className={`infoItem ${!film.facts.length ? 'hide' : ''}`}>
-                                    <h3>Факты:</h3>
-                                    <details onClick={() => setSpoilerInit(!spoilerInit)}>
-                                        <summary>{!spoilerInit ? 'Показать' : 'Скрыть'}</summary>
-                                        <ul>{film.facts.map(i => <li>{i}</li>)}</ul>
-                                    </details>
-                                </div>
-                                <div className='infoItem'>
-                                    <h3>Трейлер:</h3>
-                                    <div className='trailerBlock'>
-                                        <iframe
-                                            width="660"
-                                            height="415"
-                                            src={`https://www.youtube.com/embed/${trailerId}?&disablekb=0`}
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen>
-                                        </iframe>
+                                <div className='nameBlock'>
+                                    <img className='mobilePoster'
+                                        src={film.posterUrlPreview}
+                                        alt='poster'>
+                                    </img>
+                                    <div>
+                                        <h1>{film.nameRu}</h1>
+                                        <span><p>{`${film.nameEn} (${film.year})`}</p></span>
                                     </div>
                                 </div>
+                                {itemArr.map((item, index) => <InfoItem key={index} infoItem={item} i={index} />)}
                                 <div className='infoItem'>
                                     <Link to='/'><h4>Вернутся на главную</h4></Link>
                                 </div>
@@ -109,6 +119,6 @@ function FilmPage() {
                 )}
         </div>
     )
-}
+});
 
 export default FilmPage

@@ -1,10 +1,7 @@
-import { createStore } from 'redux';
-
 const initialState = {
     films: null,
     isLoaded: false,
     id: null,
-    autoSlider: true
 };
 
 const films = (state = initialState, action) => {
@@ -27,18 +24,9 @@ const films = (state = initialState, action) => {
                 ...state,
                 id: action.payload
             }
-
-        case 'INITIAL_SLIDER':
-            return {
-                ...state,
-                autoSlider: action.payload
-            }
-
         default:
             return state
     };
 };
 
-const store = createStore(films);
-
-export default store;
+export default films

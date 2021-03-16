@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getId } from '../redux/actions/getId'
+import { getId } from '../redux/actions/films';
 
 const FilmCard = ({ film }) => {
 

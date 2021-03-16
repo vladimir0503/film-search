@@ -1,5 +1,4 @@
 .cardWrapper {
-    // margin-left: 20px;
     position: relative;
     z-index: 1;
 
@@ -18,16 +17,12 @@
         }
     }
 
-    @media screen and (max-width: 400px) {
-        .cardImg {
-            width: 300px;
-            height: 490px;
-        }
-    }
-
     .cardName {
         margin: 25px 0 10px 0;
-        width: 348px;
+    }
+
+    h3 {
+        width: 335px;
     }
 
     h4 {
@@ -38,5 +33,18 @@
 @media screen and (max-width: 400px) {
     .cardWrapper {
         width: 300px;
+
+        .cardImg {
+            width: 300px;
+            height: 490px;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .cardWrapper {
+        h3 {
+            width: auto;
+        }
     }
 }

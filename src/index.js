@@ -5,7 +5,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import App from './App';
 import './scss/app.scss';
-import store from './redux/redusers/films'
+
+import store from './redux/store';
 
 ReactDOM.render(
   <Router>

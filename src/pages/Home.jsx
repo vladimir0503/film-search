@@ -1,12 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 import FilmCard from '../components/FilmCard';
 import Loader from '../components/Loader';
 
 const Home = () => {
 
-    const { films, isLoaded } = useSelector(state => state);
+    const { films, isLoaded } = useSelector(({ films }) => films);
 
     return (
         <div className='filmsWrapper'>

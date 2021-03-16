@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { loadFilms } from '../redux/actions/loadFilms';
-import { isLoaded } from '../redux/actions/isLoaded';
+import { loadFilms, isLoaded } from '../redux/actions/films'
 
 const headers = {
     'X-API-KEY': '41bf77c1-b2b8-4711-b6b6-76cf890ced57',
@@ -35,15 +34,19 @@ const Header = () => {
                 <Link to='/'>
                     <h1>ALL FILMS</h1>
                 </Link>
-                <input
-                    placeholder='Введите название'
-                    value={filmName}
-                    onChange={e => handleChange(e.target.value)}>
-                </input>
+                <Link to='/'>
+                    <input
+                        type='text'
+                        placeholder='Введите название'
+                        value={filmName}
+                        onChange={e => handleChange(e.target.value)}>
+                    </input>
+                </Link>
                 <img src='https://cdn1.iconfinder.com/data/icons/jumpicon-basic-ui-line-1/32/-_Magnifier-Search-Zoom--512.png'
                     alt='magnifier'
                     width='25px'
-                    height='25px'></img>
+                    height='25px'>
+                </img>
             </div>
         </div>
     );
