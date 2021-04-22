@@ -48,12 +48,10 @@
             border: none;
             outline: none;
             cursor: pointer;
-            opacity: 50%;
             transition: 0.15s;
 
             &:hover {
                 background-color: #f4f4f4;
-                opacity: 100%;
                 box-shadow: 0 0 7px #f4f4f4;
             }
 
@@ -109,17 +107,12 @@
             margin-top: -340px;
             opacity: 1;
 
-            &:hover {
-                opacity: 1;
-            }
-
             button {
                 width: 90px;
                 height: 90px;
 
                 &:hover {
                     background-color: #616161;
-                    opacity: 50%;
                     box-shadow: none;
                 }
 
