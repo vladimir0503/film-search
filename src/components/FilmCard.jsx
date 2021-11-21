@@ -2,14 +2,13 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getId } from '../redux/actions/films';
+import { getFilmInfo } from '../redux/actions/films';
 
 const FilmCard = ({ film }) => {
-
     const dispatch = useDispatch();
 
-    const handleCange = (id) => {
-        dispatch(getId(id));
+    const handleChange = (id) => {
+        dispatch(getFilmInfo(id));
     };
 
     return (
@@ -18,7 +17,7 @@ const FilmCard = ({ film }) => {
             <h4>{`(${film.year})`}</h4>
             <Link to='/filmPage'>
                 <img
-                    onClick={() => handleCange(film.filmId)}
+                    onClick={() => handleChange(film.filmId || film.kinopoiskId)}
                     className='cardImg'
                     alt='Poster'
                     src={film.posterUrlPreview}>
@@ -28,4 +27,4 @@ const FilmCard = ({ film }) => {
     );
 };
 
-export default FilmCard
+export default FilmCard;

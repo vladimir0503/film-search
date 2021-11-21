@@ -1,34 +1,48 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeCounter, fetchFrames, loadFrames, changeSlidePosition } from '../redux/actions/slider';
 
-import { changeCounter } from '../redux/actions/slider';
-
-const Slider = ({ count, position, frames }) => {
-
+const Slider = () => {
+    const { id } = useSelector(({ films }) => films);
+    const { sliderCount, slidePosition, frames } = useSelector(({ slider }) => slider);
     const dispatch = useDispatch();
 
-    const slideFoward = () => {
+    const initialSlider = async id => {
+        try {
+            dispatch(fetchFrames(id))
+        } catch (error) {
+            dispatch(loadFrames([]));
+        };
+    };
+
+    const slideForward = () => {
+        let count = sliderCount;
         dispatch(changeCounter(count === frames.length - 1 ? 0 : ++count));
     };
 
     const slideBack = () => {
+        let count = sliderCount;
         dispatch(changeCounter(count === 0 ? frames.length - 1 : --count));
     };
 
-    const slideStyles = (index) => (
+    const slideStyles = index => (
         {
             margin: '0 auto',
             display: 'block',
-            marginTop: `${index > 0 ? `-${position}` : ''}`,
+            marginTop: `${index > 0 ? `-${slidePosition}` : ''}`,
             borderRadius: '3px',
             transition: '1.5s',
             zIndex: index + 1,
-            opacity: `${index === count ? '100%' : '0'}`
+            opacity: `${index === sliderCount ? '100%' : '0'}`
         }
     );
 
     React.useEffect(() => {
+        initialSlider(id);
         dispatch(changeCounter(0));
+        dispatch(changeSlidePosition());
+
+        return () => dispatch(loadFrames([]));
     }, []);
 
     return (
@@ -54,7 +68,7 @@ const Slider = ({ count, position, frames }) => {
                         />
                     </svg>
                 </button>
-                <button onClick={slideFoward}>
+                <button onClick={slideForward}>
                     <svg
                         className="right"
                         width="50"
@@ -74,4 +88,4 @@ const Slider = ({ count, position, frames }) => {
     );
 };
 
-export default Slider
+export default Slider;

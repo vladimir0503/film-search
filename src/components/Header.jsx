@@ -1,32 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
-import { loadFilms, isLoaded } from '../redux/actions/films'
-
-const headers = {
-    'X-API-KEY': '41bf77c1-b2b8-4711-b6b6-76cf890ced57',
-};
+import { getFilms } from '../redux/actions/films';
 
 const Header = () => {
-
     const [filmName, setFilmName] = React.useState('');
     const dispatch = useDispatch();
 
-    const handleChange = (value) => {
+    const handleChange = value => {
         setFilmName(value)
     };
 
-    const searchByName = async (name) => {
-        dispatch(isLoaded());
-        const res = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${name}`, { headers });
-        const { films } = await res.json();
-        dispatch(loadFilms(films));
-    };
-
     React.useEffect(() => {
-        searchByName(filmName);
-    });
+        dispatch(getFilms(filmName))
+    }, [filmName]);
 
     return (
         <div className='headerWrapper'>

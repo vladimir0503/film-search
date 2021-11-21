@@ -1,5 +1,7 @@
 const initialState = {
-    films: null,
+    films: [],
+    filmInfo: null,
+    trailers: [],
     isLoaded: false,
     id: null,
 };
@@ -17,6 +19,18 @@ const films = (state = initialState, action) => {
                 ...state,
                 films: action.payload,
                 isLoaded: true
+            }
+
+        case 'LOAD_FILM_INFO':
+            return {
+                ...state,
+                filmInfo: action.payload
+            }
+
+        case 'LOAD_TRAILERS':
+            return {
+                ...state,
+                trailers: action.payload
             }
 
         case 'GET_ID':
