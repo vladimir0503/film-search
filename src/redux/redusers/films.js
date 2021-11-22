@@ -3,6 +3,7 @@ const initialState = {
     filmInfo: null,
     trailers: [],
     isLoaded: false,
+    filmsCount: 1,
     id: null,
 };
 
@@ -19,6 +20,12 @@ const films = (state = initialState, action) => {
                 ...state,
                 films: action.payload,
                 isLoaded: true
+            }
+
+        case 'GET_FILMS_COUNT':
+            return {
+                ...state,
+                filmsCount: action.payload
             }
 
         case 'LOAD_FILM_INFO':

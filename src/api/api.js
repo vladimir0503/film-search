@@ -14,8 +14,8 @@ const getTrailerId = (url) => {
 
 const searchByName = async name => {
     const res = await fetch(`${url}/api/v2.1/films/search-by-keyword?keyword=${name}`, { headers });
-    const { films } = await res.json();
-    return films
+    const { films, searchFilmsCountResult } = await res.json();
+    return ({ films, searchFilmsCountResult });
 };
 
 const getPremieresList = async (year, month) => {

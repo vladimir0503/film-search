@@ -21,7 +21,7 @@ const monthArr = [
 ];
 
 const Home = () => {
-    const { films, isLoaded } = useSelector(({ films }) => films);
+    const { films, isLoaded, filmsCount } = useSelector(({ films }) => films);
     const dispatch = useDispatch();
 
     React.useEffect(async () => {
@@ -32,13 +32,18 @@ const Home = () => {
         };
     }, []);
 
+    if (!filmsCount) {
+        return <div className='filmsWrapper' >
+            <h1>Ничего не найдено</h1>
+        </div>
+    };
+
     return (
         <div className='filmsWrapper'>
             {!isLoaded ? <Loader />
-                : films.length ? films.map((item, id) => <FilmCard key={id} film={item} />)
-                    : <h1>Ничего не найдено</h1>}
+                : films.map((item, id) => <FilmCard key={id} film={item} />)}
         </div>
     );
 };
 
-export default Home
+export default Home;
