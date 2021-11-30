@@ -27,7 +27,10 @@ const getPremieresList = async (year, month) => {
 const getFilmInfo = async id => {
     const resInfoItems = await fetch(`${url}/api/v2.2/films/${id}`, { headers });
     const data = await resInfoItems.json();
-    return data;
+
+    const resFacts = await fetch(`${url}/api/v2.2/films/${id}/facts`, { headers });
+    const { items } = await resFacts.json();
+    return { ...data, items };
 };
 
 const getTrailers = async id => {

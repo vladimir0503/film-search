@@ -2,12 +2,13 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { api } from '../api/api';
+import { loadFilmInfo } from '../redux/actions/films';
 
 import InfoItem from '../components/InfoItem'
 import Slider from '../components/Slider';
 import Loader from '../components/Loader';
 import Trailers from '../components/Trailers';
-import { loadFilmInfo } from '../redux/actions/films';
+import FilmFacts from '../components/FilmFacts';
 
 const FilmPage = React.memo(function FilmPage() {
     const { id, filmInfo, trailers } = useSelector(({ films }) => films);
@@ -34,7 +35,7 @@ const FilmPage = React.memo(function FilmPage() {
 
     React.useEffect(() => {
         return () => dispatch(loadFilmInfo(null));
-    }, [])
+    }, []);
 
     return (
         <div className='filmPage'>
@@ -60,6 +61,10 @@ const FilmPage = React.memo(function FilmPage() {
                                     </div>
                                 </div>
                                 {itemArr.map((item, index) => <InfoItem key={index} infoItem={item} i={index} />)}
+                                <div className={`infoItem ${!filmInfo.items.length ? 'hide' : ''}`}>
+                                    <h3>Факты</h3>
+                                    <FilmFacts facts={filmInfo.items} />
+                                </div>
                                 <div className={`infoItem ${!trailers.length ? 'hide' : ''}`}>
                                     <h3>Трейлеры</h3>
                                     <Trailers />
